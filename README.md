@@ -1,70 +1,99 @@
-# Getting Started with Create React App
+# Jira TestCase Generator
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A web application to automatically generate test cases from Jira user stories. This project enables users to fetch a user story from Jira by story ID and generate test cases from the story description, simplifying the QA workflow for Jira users.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- **Fetch Jira User Story:** Enter your Jira instance URL and a story ID to retrieve the story's description from Jira using the REST API.
+- **Generate Test Cases:** Automatically splits the user story description into sentences and creates basic test cases for each sentence.
+- **View Test Cases:** Presents generated test cases with steps and expected results in a user-friendly format.
+- **Simple Interface:** Built with React and Bootstrap for an intuitive experience.
 
-### `npm start`
+## How It Works
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+1. **Backend (Express + Axios):**
+   - `/backend/server.js` provides an API endpoint `/api/issue/:id` that fetches a Jira issue's details using the Jira REST API.
+   - Requires your Jira email and API token as environment variables for authentication.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+2. **Frontend (React):**
+   - Enter your Jira URL and Story ID in the app.
+   - Click "Fetch User Story" to load the story description.
+   - Click "Generate Test Cases" to automatically create test cases from the description.
+   - View the generated test cases, each with steps and expected results.
 
-### `npm test`
+## Getting Started
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Prerequisites
 
-### `npm run build`
+- Node.js and npm installed
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Installation
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/Ayusha22-gho/Jira-TestCase-generator.git
+   cd Jira-TestCase-generator
+   ```
+2. Install frontend dependencies:
+   ```bash
+   npm install
+   ```
+3. Set up the backend:
+   - Go to the `backend` folder.
+   - Install backend dependencies:
+     ```bash
+     npm install
+     ```
+   - Create a `.env` file with your Jira credentials:
+     ```
+     JIRA_EMAIL=your-email@example.com
+     JIRA_API_TOKEN=your-jira-api-token
+     ```
+   - Run the backend server:
+     ```bash
+     node server.js
+     ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Running the App
 
-### `npm run eject`
+- Start the frontend development server:
+  ```bash
+  npm start
+  ```
+- The app runs at [http://localhost:3000](http://localhost:3000).
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Usage
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+1. Enter your Jira instance URL (e.g., `https://your-domain.atlassian.net`).
+2. Enter the story ID (e.g., `KAN-123`).
+3. Click "Fetch User Story" to retrieve the description.
+4. Click "Generate Test Cases" to view automatically generated test cases.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Technologies Used
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- **Frontend:** React, Bootstrap, JavaScript, HTML, CSS
+- **Backend:** Node.js, Express, Axios
+- **Other:** Jira REST API
 
-## Learn More
+## Project Structure
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```
+backend/
+  server.js         # Express backend to fetch Jira issues
+src/
+  App.js            # Main React app with user story and test case generation logic
+  setupProxy.js     # Proxy setup for API requests
+  index.js, index.css, ... # React entry and styling
+public/
+  index.html        # HTML template
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Contributing
 
-### Code Splitting
+Contributions are welcome! Please open issues or submit pull requests for improvements or new features.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## License
 
-### Analyzing the Bundle Size
+This project is licensed under the MIT License.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+---
